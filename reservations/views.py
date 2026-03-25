@@ -57,3 +57,17 @@ class HotelListView(generics.ListAPIView):
             )
 
         return super().list(request, *args, **kwargs)
+
+class ReservationCreateView(generics.CreateAPIView):
+    serializer_class = ReservationSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        
+        reservation = serializer.instance
+        return Response(
+            {"confirmation_number": reservation.confirmation_number},
+            status=status.HTTP_201_CREATED
+        )
