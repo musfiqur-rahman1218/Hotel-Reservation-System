@@ -86,18 +86,14 @@ WSGI_APPLICATION = 'hotel_reservation.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('DB_NAME', 'hotel'),
-        'USER': os.getenv('DB_USER', 'root'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'roo'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '3306'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        }
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL', 'mysql://root:roo@localhost:3306/hotel'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
 
