@@ -1,7 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from .models import Hotel, Reservation
-from .serializers import HotelSerializer
+from .serializers import HotelSerializer, ReservationSerializer
 from datetime import datetime
 from django.db.models import Count, Q, F
 
