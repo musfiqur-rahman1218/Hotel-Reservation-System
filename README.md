@@ -183,3 +183,20 @@ python manage.py collectstatic --noinput
 ### 11. Reload the Web App
 Go back to the **Web** tab and click the big green **Reload musfiqur.pythonanywhere.com** button.
 
+## Final Deployment Checklist
+Before considering the deployment complete, verify:
+- [ ] Your `.env` file is created and contains correct `SECRET_KEY` and `DATABASE_URL`.
+- [ ] `DEBUG=False` is set in your `.env`.
+- [ ] Migrations (`python manage.py migrate`) ran without errors.
+- [ ] Static files were collected (`python manage.py collectstatic`).
+- [ ] The `pythonanywhere_wsgi.py` contents were properly copy-pasted into the Web tab's WSGI file.
+- [ ] The Virtualenv and Source Code paths in the Web tab are absolutely correct.
+- [ ] You clicked the **Reload** button on the Web tab.
+
+## Troubleshooting Common Errors
+* **500 Internal Server Error:** Check your PythonAnywhere **Error log** (link on the Web tab). Usually caused by a missing `.env` variable, wrong database credentials, or a syntax error in your WSGI file.
+* **403 Forbidden / DisallowedHost:** Ensure `musfiqur.pythonanywhere.com` is in your `ALLOWED_HOSTS` variable in `.env`.
+* **Missing CSS/Styles (Admin looks broken):** You either forgot to run `collectstatic`, or your Static files configuration is missing on the Web tab. Be sure to scroll down the **Web** tab and add a mapping under Static files:
+  - **URL:** `/static/`
+  - **Directory:** `/home/musfiqur/Hotel-Reservation-System/staticfiles/`
+
