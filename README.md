@@ -40,10 +40,22 @@ A Django REST Framework backend for a Hotel Reservation System. Built with Pytho
    python manage.py seed_hotels
    ```
 
-6. **Run Server**
+## How to Run the Project
+
+Once the database is set up and migrations are applied, follow these steps to run the REST API locally:
+
+1. Ensure your virtual environment is active:
+   ```bash
+   .\.venv\Scripts\activate
+   ```
+
+2. Start the Django development server:
    ```bash
    python manage.py runserver
    ```
+
+3. The server will start on `http://127.0.0.1:8000/`.
+4. You can explore the interactive API schema (Swagger UI) by navigating to `http://127.0.0.1:8000/api/schema/swagger-ui/` in your browser.
 
 ## API Documentation
 

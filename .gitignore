@@ -41,3 +41,6 @@ venv.bak/
 .idea/
 .vscode/
 *.swp
+
+# Assignment Files
+REST API Project.pdf
